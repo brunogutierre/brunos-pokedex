@@ -1,0 +1,14 @@
+.detail-cont {
+    display: flex;
+
+    .detail-image {
+        max-width: min(100%, 500px);
+        min-height: 100px;
+    }
+
+    .detail-name {
+        &::first-letter {
+            text-transform: capitalize;
+        }
+    }
+}

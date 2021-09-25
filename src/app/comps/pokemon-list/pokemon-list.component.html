@@ -1,0 +1,20 @@
+<table>
+    <tr>
+        <th>Pokemon</th>
+    </tr>
+
+    <tr *ngFor="let pokemon of pokemons" class="selectable-table-line" (click)="showPokemon(pokemon)">
+        <td>
+            <img class="mini-sprite" [src]="pokemon.sprites?.front_default" alt="">
+        </td>
+        <td>{{pokemon.order}}</td>
+        <td>{{pokemon.name}}</td>
+    </tr>
+</table>
+<div>
+    <a (click)="firstPage()">first</a>
+    <a (click)="prevPage()">prev</a>
+    <a (click)="nextPage()">next</a>
+    <a (click)="lastPage()">last</a>
+</div>
+{{pokemonCount}}

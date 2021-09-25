@@ -1,0 +1,14 @@
+@font-face {
+    font-family: pokemon-font;
+    src: url(../assets/fonts/Pokemon.ttf);
+  }
+
+.toolbar {
+    font-family: 'pokemon-font';
+    color: #ffcb05;
+    letter-spacing: 2px;
+
+    font-size: 5em;
+
+    text-shadow: 4px 4px 0px #3c5aa6;
+}

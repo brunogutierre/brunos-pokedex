@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import {Observable, of} from "rxjs";
+import { tap, map } from 'rxjs/operators';
+import {HttpClient} from "@angular/common/http";
+import { LocalStorageService } from './local-storage.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RemotePokemonService {
+  private urlBase = '/api/';
+  public pageSize: number = 5;
+
+  constructor(private httpClient: HttpClient, private localStoreService: LocalStorageService) { }
+
+  getPokemon(id: string): Observable<any> {
+    let pokemon = this.localStoreService.getPokemon(id);
+
+    if (!pokemon) {
+      return this.httpClient.get(this.urlBase + 'pokemon/' + id).pipe(tap(p => {this.localStoreService.savePokemon(p)}));
+    }
+    else {
+      return of(pokemon);
+    }
+  }
+
+  getPokemons(page: number = 0, limit: number = this.pageSize): Observable<any> {
+    return this.httpClient.get(this.urlBase + `pokemon/?offset=${page * this.pageSize}&limit=${limit}`)
+  }
+
+  getPokemonSpecie(id: string): Observable<any> {
+    return this.httpClient.get(this.urlBase + 'pokemon-species/' + id);
+  }
+
+  getPokemonSpecies(page: number = 0, limit: number = this.pageSize): Observable<any> {
+    return this.httpClient.get(this.urlBase + `pokemon-species/?offset=${page * this.pageSize}&limit=${limit}`);
+  }
+}
