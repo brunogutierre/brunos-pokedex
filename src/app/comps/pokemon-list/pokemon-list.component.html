@@ -5,7 +5,7 @@
 
     <tr *ngFor="let pokemon of pokemons" class="selectable-table-line" (click)="showPokemon(pokemon)">
         <td>
-            <img class="mini-sprite" [src]="pokemon.sprites?.front_default" alt="">
+            <img class="mini-sprite" [src]="pokemon.url_image_mini" alt="">
         </td>
         <td>{{pokemon.order}}</td>
         <td>{{pokemon.name}}</td>

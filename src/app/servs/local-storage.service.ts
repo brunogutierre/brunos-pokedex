@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Pokemon } from '../types/pokemon';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,10 @@ export class LocalStorageService {
     return this.localDB[id];
   }
 
-  savePokemon(pokemon: any) {
+  savePokemon(pokemon: Pokemon) {
     if (pokemon && !this.localDB[pokemon.name]){
       this.localDB[pokemon.name] = pokemon;
-      // TODO: reduce size of data
-      // localStorage.setItem(this.DB_NAME, JSON.stringify(this.localDB));
+      localStorage.setItem(this.DB_NAME, JSON.stringify(this.localDB));
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RemotePokemonService } from 'src/app/servs/remote-pokemon.service';
+import { Pokemon } from 'src/app/types/pokemon';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -7,7 +8,7 @@ import { RemotePokemonService } from 'src/app/servs/remote-pokemon.service';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  pokemons: any[] = [];
+  pokemons: Pokemon[] = [];
   pokemonCount: number = 0;
   page: number = 0;
 
@@ -20,14 +21,14 @@ export class PokemonListComponent implements OnInit {
   }
 
   refreshList() {
-    this.remotePokemonService.getPokemons(this.page).subscribe(list => {
+    this.remotePokemonService.getPokemonSpecies(this.page).subscribe(list => {
       if (list && list.results){
         this.pokemonCount = list.count;
-        this.pokemons = list.results;
+        this.pokemons = [];
 
-        this.pokemons.forEach((pokemon, index) => {
-          this.remotePokemonService.getPokemon(pokemon.name).subscribe(fullPokemon => {
-            this.pokemons[index] = fullPokemon;
+        list.results.forEach((pokemon:any, index:number) => {
+          this.remotePokemonService.getPokemon(pokemon.name).subscribe(pokemon => {
+            this.pokemons[index] = pokemon;
           })
         });
       }

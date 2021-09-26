@@ -3,6 +3,7 @@ import {Observable, of} from "rxjs";
 import { tap, map } from 'rxjs/operators';
 import {HttpClient} from "@angular/common/http";
 import { LocalStorageService } from './local-storage.service';
+import { Pokemon } from '../types/pokemon';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,13 @@ export class RemotePokemonService {
 
   constructor(private httpClient: HttpClient, private localStoreService: LocalStorageService) { }
 
-  getPokemon(id: string): Observable<any> {
+  getPokemon(id: string): Observable<Pokemon> {
     let pokemon = this.localStoreService.getPokemon(id);
 
     if (!pokemon) {
-      return this.httpClient.get(this.urlBase + 'pokemon/' + id).pipe(tap(p => {this.localStoreService.savePokemon(p)}));
+      return this.httpClient.get(this.urlBase + 'pokemon/' + id).pipe(
+        map(p => new Pokemon(p)),
+        tap(p => {this.localStoreService.savePokemon(p)}));
     }
     else {
       return of(pokemon);
