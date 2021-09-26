@@ -1,0 +1,12 @@
+<div class="evolution-phase">
+    <div class="evolution-cont">
+        <app-pokemon-link [id]="getId()"></app-pokemon-link>
+    </div>
+
+    <div *ngIf="phase.evolves_to && phase.evolves_to.length > 0" class="evo-children">
+        <div class="poke-font">&#9654;</div>
+        <div>
+            <app-evolution-phase *ngFor="let evo of phase.evolves_to" [phase]="evo"></app-evolution-phase>
+        </div>
+    </div>
+</div>

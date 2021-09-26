@@ -9,6 +9,7 @@ import { Pokemon } from 'src/app/types/pokemon';
 })
 export class PokemonDetailComponent implements OnInit {
   pokemon: Pokemon | null = null;
+  evolution: any;
 
   constructor(private remotePokemonService: RemotePokemonService) {
 
@@ -18,13 +19,22 @@ export class PokemonDetailComponent implements OnInit {
 
   }
 
-  public setPokemon(pokemon: Pokemon) {
+  public setPokemon(pokemon: Pokemon | null) {
     this.pokemon = pokemon;
+    console.log(this.pokemon)
 
-    if (!this.pokemon.hasSpecies()) {
-      this.remotePokemonService.getPokemonSpecie(this.pokemon.name).subscribe(specie => {
-        this.pokemon?.setSpecies(specie);
-      })
+    if (this.pokemon) {
+      if (!this.pokemon.hasSpecies()) {
+        this.remotePokemonService.getPokemonSpecie(this.pokemon.name).subscribe(specie => {
+          this.pokemon?.setSpecies(specie);
+        })
+      }
+
+      if (this.pokemon.evolution_id) {
+        this.remotePokemonService.getEvolutionChain(this.pokemon.evolution_id).subscribe(evo => {
+          this.evolution = evo;
+        });
+      }
     }
   }
 

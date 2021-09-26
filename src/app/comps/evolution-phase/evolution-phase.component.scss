@@ -1,0 +1,21 @@
+.evolution-phase {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.evolution-cont {
+    display: inline-block;
+    padding: 10px;
+
+    background-color: #ddd;
+    border-radius: 10px;
+    margin: 10px 20px;
+}
+
+.evo-children {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

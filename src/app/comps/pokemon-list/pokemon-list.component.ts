@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RemotePokemonService } from 'src/app/servs/remote-pokemon.service';
 import { Pokemon } from 'src/app/types/pokemon';
+import { Util } from 'src/app/util/Util';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -27,8 +28,8 @@ export class PokemonListComponent implements OnInit {
         this.pokemons = [];
 
         list.results.forEach((pokemon:any, index:number) => {
-          this.remotePokemonService.getPokemon(pokemon.name).subscribe(pokemon => {
-            this.pokemons[index] = pokemon;
+          this.remotePokemonService.getPokemon(Util.getIdFromUrl(pokemon.url) || '').subscribe(poke => {
+            this.pokemons[index] = poke;
           })
         });
       }
@@ -62,9 +63,14 @@ export class PokemonListComponent implements OnInit {
 
   lastPage() {
     if (!this.isLastPage()) {
-      this.page = Math.floor(this.pokemonCount / this.remotePokemonService.pageSize);
+      this.page = this.getLastPage();
       this.refreshList();
     }
+  }
+
+  toPage(page: number) {
+    this.page = Math.min(Math.max(0, page), this.getLastPage());
+    this.refreshList();
   }
 
   isLastPage(): boolean {
@@ -73,5 +79,9 @@ export class PokemonListComponent implements OnInit {
 
   isFirstPage(): boolean {
     return this.page <= 0;
+  }
+
+  getLastPage(): number {
+    return Math.floor(this.pokemonCount / this.remotePokemonService.pageSize);
   }
 }

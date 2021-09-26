@@ -1,0 +1,34 @@
+.banner-cont {
+    display: inline-block;
+    margin: 2px 4px;
+    box-shadow: 2px 2px 3px #666;
+    border-radius: 100%;
+}
+
+.banner-cont:hover {
+    box-shadow: 2px 2px 3px #333;
+}
+
+.bnr-dark { background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/09/Pok%C3%A9mon_Dark_Type_Icon.svg'); }
+.bnr-ground { background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8d/Pok%C3%A9mon_Ground_Type_Icon.svg'); }
+.bnr-dragon { background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a6/Pok%C3%A9mon_Dragon_Type_Icon.svg'); }
+.bnr-rock { background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/bb/Pok%C3%A9mon_Rock_Type_Icon.svg'); }
+.bnr-ghost { background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a0/Pok%C3%A9mon_Ghost_Type_Icon.svg'); }
+.bnr-poison { background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Pok%C3%A9mon_Poison_Type_Icon.svg'); }
+.bnr-electric { background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Pok%C3%A9mon_Electric_Type_Icon.svg'); }
+.bnr-psychic { background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ab/Pok%C3%A9mon_Psychic_Type_Icon.svg'); }
+.bnr-fire { background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/56/Pok%C3%A9mon_Fire_Type_Icon.svg'); }
+.bnr-fairy { background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/08/Pok%C3%A9mon_Fairy_Type_Icon.svg'); }
+.bnr-steel { background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/38/Pok%C3%A9mon_Steel_Type_Icon.svg'); }
+.bnr-ice { background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/88/Pok%C3%A9mon_Ice_Type_Icon.svg'); }
+.bnr-fighting { background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/be/Pok%C3%A9mon_Fighting_Type_Icon.svg'); }
+.bnr-water { background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0b/Pok%C3%A9mon_Water_Type_Icon.svg'); }
+.bnr-grass { background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f6/Pok%C3%A9mon_Grass_Type_Icon.svg'); }
+.bnr-bug { background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3c/Pok%C3%A9mon_Bug_Type_Icon.svg'); }
+.bnr-flying { background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Pok%C3%A9mon_Flying_Type_Icon.svg'); }
+.bnr-normal { background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/aa/Pok%C3%A9mon_Normal_Type_Icon.svg'); }
+
+.bnr-size-s { width: 24px; height: 24px; }
+.bnr-size-m { width: 32px; height: 32px; }
+.bnr-size-g { width: 48px; height: 48px; }
+.bnr-size-l { width: 64px; height: 64px; }

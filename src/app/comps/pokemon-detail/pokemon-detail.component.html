@@ -1,39 +1,114 @@
 <div *ngIf="pokemon" class="detail-cont">
     <div class="detail-image">
         <img alt="pokemon image" [src]="getBestImagem()">
+        <div class="poke-shadow"></div>
     </div>
 
     <div class="detail-header">
-        <h2 class="detail-name">
-            {{pokemon?.name}}
-        </h2>
+        <div class="border-poke {{pokemon.biology.color}}">
+            <h2 class="detail-name pokemon-name">
+                {{pokemon.name}}
+            </h2>
 
-        <div class="detail-type">
             <div class="detail-desc-type">
-
+                {{pokemon.desc_type}}
             </div>
             
             <div class="detail-element-list">
-                <div class="detail-element-type"></div>
+                <app-banner-type *ngFor="let type of pokemon.types" [type]="type.type.name" size="g"></app-banner-type>
             </div>
         </div>
 
-        <div class="detail-text-decoration"></div>
-    </div>
+        <div class="detail-text-decoration">
+            {{pokemon.text_decoration}}
+        </div>
 
-    <div class="detail-atr-list">
-        <div class="detail-atr-iten"></div>
+        <div class="detail-atr-list">
+            <div class="detail-atr" *ngFor="let atr of pokemon.atributes">
+                <div>
+                    <label>{{atr.name | reduceAtrName}}</label>
+                    {{atr.base}} ({{atr.effort}})
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-Abilities-list">
+            <h3 class="border-poke {{pokemon.biology.color}}">
+                Abilities
+            </h3>
+
+            <div>
+                <div *ngFor="let abt of pokemon.abilities" class="drop-ability">
+                    {{abt.name}}
+                </div>
+            </div>
+        </div>
     </div>
     
-    <div class="detail-evo-cont">
-        <!--TODO-->
-    </div>
+    <div class="extra-data">
+        <div class="detail-evo-cont">
+            <h3 class="border-poke {{pokemon.biology.color}}">
+                Evolution Chain
+            </h3>
 
-    <div class="detail-bio">
-        <!--TODO-->
-    </div>
+            <div *ngIf="evolution" class="evolution-list-cont">
+                <app-evolution-phase [phase]="evolution.chain"></app-evolution-phase>
+            </div>
+        </div>
 
-    <div class="detail-Abilities-list">
-        <!--TODO-->
+        <div class="detail-alt-cont">
+            <h3 class="border-poke {{pokemon.biology.color}}">
+                Variations
+            </h3>
+
+            <div class="alt-list">
+                <div *ngFor="let alt of pokemon.alt_forms" class="alt-list-cont">
+                    <app-pokemon-link [id]="alt"></app-pokemon-link>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-bio">
+            <h3 class="border-poke {{pokemon.biology.color}}">
+                Biology
+            </h3>
+
+            <div class="detail-atr-list">
+                <div class="detail-atr">
+                    <div>
+                        <label>Height</label>
+                        {{pokemon.biology.height}}
+                    </div>
+                </div>
+
+                <div class="detail-atr">
+                    <div>
+                        <label>Weight</label>
+                        {{pokemon.biology.weight}}
+                    </div>
+                </div>
+
+                <div class="detail-atr">
+                    <div>
+                        <label>Color</label>
+                        {{pokemon.biology.color}}
+                    </div>
+                </div>
+
+                <div class="detail-atr">
+                    <div>
+                        <label>Shape</label>
+                        {{pokemon.biology.shape}}
+                    </div>
+                </div>
+
+                <div class="detail-atr">
+                    <div>
+                        <label>Habitat</label>
+                        {{pokemon.biology.habitat}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

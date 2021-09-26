@@ -1,14 +1,181 @@
+.border-poke {
+    border-bottom: 3px solid black;
+
+    &.black {border-color: #111;}
+    &.blue {border-color: #286ac0;}
+    &.brown {border-color: #703528;}
+    &.gray {border-color: #777;}
+    &.green {border-color: #149b0f;}
+    &.pink {border-color: #dd8686;}
+    &.purple {border-color: #77287e;}
+    &.red {border-color: #be0000;}
+    &.white {border-color: #b4b4b4;}
+    &.yellow {border-color: #d1d40e;}
+}
+
 .detail-cont {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
 
     .detail-image {
-        max-width: min(100%, 500px);
+        max-width: 100%;
+        width: 300px;
         min-height: 100px;
-    }
 
-    .detail-name {
-        &::first-letter {
-            text-transform: capitalize;
+        background-color: #ddd;
+        border-radius: 10px;
+        padding: 20px;
+
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            z-index: 1;
+        }
+
+        .poke-shadow {
+            width: 100%;
+            height: 200px;
+            margin-top: -191px;
+            border-radius: 100%;
+            background: radial-gradient(circle, #818181 0%, #b3b3b3 30%, rgba(0, 0, 0, 0) 60%);
+            transform: translateY(41%) scaleY(0.4);
         }
     }
+
+    .detail-header {
+        flex: 3;
+        padding: 5px 0 5px 40px;
+
+        h2, .detail-type {
+            display: inline-block;
+        }
+
+        h2 {
+            font-size: 3em;
+            margin: 0;
+            line-height: 80px;
+        }
+
+        h2::after {
+            content: " |";
+        }
+
+        .detail-desc-type {
+            margin-left: 10px;
+            font-size: 2em;
+            font-weight: 100;
+            line-height: 80px;
+
+            display: inline-block;
+        }
+
+        .detail-element-list {
+            float: right;
+            padding-top: 20px;
+            line-height: 80px;
+        }
+
+        .detail-text-decoration {
+            font-weight: 100;
+            font-size: 18px;
+            font-style: italic;
+            color: #333;
+            overflow-wrap: anywhere;
+
+            padding: 6px 0;
+            text-transform: capitalize;
+            margin-bottom: 20px;
+        }
+    }
+
+    .detail-atr-list {
+        display: flex;
+
+        height: 88px;
+        width: 100%;
+
+        align-items: center;
+        justify-content: center;
+
+        .detail-atr {
+            flex: 1;
+
+            background-color: #ddd;
+            border-radius: 5px;
+            text-align: center;
+
+            overflow: hidden;
+            margin: 5px 10px;
+
+            max-width: 90px;
+
+            &>div {
+                padding-bottom: 16px;
+            }
+            
+            label {
+                display: block;
+
+                line-height: 2em;
+                font-weight: 900;
+                text-transform: uppercase;
+                background-color: #c9c9c9;
+
+                margin-bottom: 12px;
+            }
+        }
+    }
+
+    .detail-Abilities-list {
+        & > div {
+            text-align: center;
+        }
+
+        .drop-ability {
+            padding: 5px 20px;
+            border-radius: 5px;
+            background-color: #ddd;
+            text-transform: capitalize;
+            display: inline-block;
+    
+            margin: 0 10px;
+        }
+    }
+
+    .evolution-list-cont {
+        text-align: center;
+    }
+
+    .extra-data {
+        width: 100%;
+    }
+
+    .alt-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .alt-list-cont {
+        display: inline-block;
+        padding: 10px;
+        background-color: #ddd;
+        border-radius: 10px;
+        margin: 10px 20px;
+    }
+
+    .detail-evo-cont { display: inline-block; width: calc(60% - 30px); margin-right: 30px; }
+    .detail-alt-cont { display: inline-block; width: 40%; }
+    .detail-bio { width: 100%; }
 }

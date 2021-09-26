@@ -1,11 +1,13 @@
+<div class="app-cont">
+  <div class="toolbar poke-font" role="banner">
+    Bruno's Pokedex
+  </div>
 
-<div class="toolbar" role="banner">
-  Bruno's Pokedex
-</div>
-
-<div class="content" role="main">
-  <app-pokemon-list (detailEmitter)="detailCont.setPokemon($event)"></app-pokemon-list>
-  <app-pokemon-detail #detailCont></app-pokemon-detail>
+  <div class="content" role="main">
+    <app-pokemon-detail #detailCont></app-pokemon-detail>
+    <app-pokemon-list (detailEmitter)="detailCont.setPokemon($event)"></app-pokemon-list>
+    
+  </div>
 </div>
 
 <router-outlet></router-outlet>

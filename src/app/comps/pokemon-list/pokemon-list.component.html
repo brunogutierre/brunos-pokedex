@@ -1,20 +1,46 @@
-<table>
+<table class="table-pokemon">
     <tr>
+        <th class="small">No.</th>
+        <th class="small"></th>
         <th>Pokemon</th>
+        <th>Type</th>
+        <th>Abilities</th>
     </tr>
 
-    <tr *ngFor="let pokemon of pokemons" class="selectable-table-line" (click)="showPokemon(pokemon)">
-        <td>
-            <img class="mini-sprite" [src]="pokemon.url_image_mini" alt="">
-        </td>
-        <td>{{pokemon.order}}</td>
-        <td>{{pokemon.name}}</td>
-    </tr>
+    <ng-container *ngFor="let pokemon of pokemons">
+        <tr *ngIf="pokemon && pokemon.order" class="selectable-table-line" (click)="showPokemon(pokemon)">
+            <td class="center">{{pokemon.order | positionFormat}}</td>
+            <td>
+                <app-pokemon-sprite [src]="pokemon.url_image_mini" [color]="pokemon.biology.color"></app-pokemon-sprite>
+            </td>
+            <td class="center pokemon-name">{{pokemon.name}}</td>
+            <td class="center pokemon-name">
+                <app-banner-type *ngFor="let type of pokemon.types" [type]="type.type.name" size="m"></app-banner-type>
+            </td>
+
+            <td class="center pokemon-name">
+                <div class="desc-ability" *ngFor="let ability of pokemon.abilities">
+                    {{ability.name}}
+                </div>
+            </td>
+        </tr>
+    </ng-container>
 </table>
-<div>
-    <a (click)="firstPage()">first</a>
-    <a (click)="prevPage()">prev</a>
-    <a (click)="nextPage()">next</a>
-    <a (click)="lastPage()">last</a>
+
+<div class="table-footer">
+    <div class="menu-pagenation">
+        <a class="poke-font" [ngClass]="{'disabled': page === 0}" (click)="firstPage()">&#171;</a>
+        <a class="poke-font" [ngClass]="{'disabled': page === 0}" (click)="prevPage()">&#060;</a>
+        <a class="poke-font text" *ngIf="page-2 >= 0" (click)="toPage(page-2)">{{page-1}}</a>
+        <a class="poke-font text" *ngIf="page-1 >= 0" (click)="toPage(page-1)">{{page}}</a>
+        <a class="poke-font text disabled" (click)="toPage(page)">{{page+1}}</a>
+        <a class="poke-font text" *ngIf="page+1 <= getLastPage()" (click)="toPage(page+1)">{{page+2}}</a>
+        <a class="poke-font text" *ngIf="page+2 <= getLastPage()" (click)="toPage(page+2)">{{page+3}}</a>
+        <a class="poke-font" [ngClass]="{'disabled': isLastPage()}" (click)="nextPage()">&#062;</a>
+        <a class="poke-font" [ngClass]="{'disabled': isLastPage()}" (click)="lastPage()">&#187;</a>
+    </div>
+
+    <div class="poke-count" *ngIf="pokemonCount">
+        {{pokemonCount}} Pokemons
+    </div>
 </div>
-{{pokemonCount}}

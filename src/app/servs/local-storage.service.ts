@@ -17,9 +17,9 @@ export class LocalStorageService {
   }
 
   savePokemon(pokemon: Pokemon) {
-    if (pokemon && !this.localDB[pokemon.name]){
-      this.localDB[pokemon.name] = pokemon;
-      localStorage.setItem(this.DB_NAME, JSON.stringify(this.localDB));
+    if (pokemon && !this.localDB[pokemon.id]){
+      this.localDB[pokemon.id] = pokemon;
+      // localStorage.setItem(this.DB_NAME, JSON.stringify(this.localDB));
     }
   }
 }

@@ -20,7 +20,10 @@ export class RemotePokemonService {
     if (!pokemon) {
       return this.httpClient.get(this.urlBase + 'pokemon/' + id).pipe(
         map(p => new Pokemon(p)),
-        tap(p => {this.localStoreService.savePokemon(p)}));
+        tap(p => {this.getPokemonSpecie(p.id).subscribe(s => {
+          p.setSpecies(s);
+          this.localStoreService.savePokemon(p);
+        })}));
     }
     else {
       return of(pokemon);
@@ -31,11 +34,15 @@ export class RemotePokemonService {
     return this.httpClient.get(this.urlBase + `pokemon/?offset=${page * this.pageSize}&limit=${limit}`)
   }
 
-  getPokemonSpecie(id: string): Observable<any> {
+  getPokemonSpecie(id: string | number): Observable<any> {
     return this.httpClient.get(this.urlBase + 'pokemon-species/' + id);
   }
 
   getPokemonSpecies(page: number = 0, limit: number = this.pageSize): Observable<any> {
     return this.httpClient.get(this.urlBase + `pokemon-species/?offset=${page * this.pageSize}&limit=${limit}`);
+  }
+
+  getEvolutionChain(id: string | number): Observable<any> {
+    return this.httpClient.get(this.urlBase + 'evolution-chain/' + id);
   }
 }
