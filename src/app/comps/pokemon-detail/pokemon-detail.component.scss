@@ -60,11 +60,25 @@
 
   position: fixed;
   top: 10vh;
-  left: calc(50vw - 600px);
+  left: calc(50vw - min(49vw, 600px));
+  max-width: calc(100vw - 20px);
   width: 1200px;
   max-height: 80vh;
   background-color: white;
   border-radius: 20px;
+
+  background: linear-gradient(
+      153deg, rgb(211 220 221) 0%, 
+      rgb(255 255 255 / 78%) 10%, 
+      rgb(213 220 221) 20%, 
+      rgb(255 255 255 / 85%) 30%, 
+      rgb(216 221 221) 40%, 
+      rgb(211 220 221) 70%, 
+      rgb(255 255 255 / 86%) 80%, 
+      rgb(210 216 217) 90%, 
+      rgb(219 230 231) 100%);
+
+  border: 7px solid white;
 
   .detail-cont-inside {
     display: flex;
@@ -309,7 +323,9 @@
     width: 100vw;
     height: 100vh;
     max-height: 100vh;
-    background-color: white;
+    max-width: 100vw;
+    background: white;
+    border: 0 solid white;
   
     padding: 0;
     border-radius: 0;
