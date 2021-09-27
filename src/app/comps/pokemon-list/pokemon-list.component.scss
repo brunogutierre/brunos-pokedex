@@ -13,6 +13,12 @@
     th, td {
         padding: 7px 0;
     }
+
+    th input {
+        color: #222;
+        width: 7em;
+        margin-right: -180px;
+    }
 }
 
 .tr-loading td {
@@ -66,7 +72,10 @@
 
     .poke-count {
         float: right;
-        margin-left: -10em;
+        width: 200px;
+        margin-left: -20em;
+        font-size: 1.1em;
+        padding: 10px 20px;
     }
 }
 

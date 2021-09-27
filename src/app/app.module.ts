@@ -12,6 +12,8 @@ import { PokemonSpriteComponent } from './comps/pokemon-sprite/pokemon-sprite.co
 import { ReduceAtrNamePipe } from './pipes/reduce-atr-name.pipe';
 import { EvolutionPhaseComponent } from './comps/evolution-phase/evolution-phase.component';
 import { PokemonLinkComponent } from './comps/pokemon-link/pokemon-link.component';
+import { PokeHeightPipe } from './pipes/poke-height.pipe';
+import { PokeWeightPipe } from './pipes/poke-weight.pipe';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -29,7 +31,9 @@ export class MyHammerConfig extends HammerGestureConfig {
     PokemonSpriteComponent,
     ReduceAtrNamePipe,
     EvolutionPhaseComponent,
-    PokemonLinkComponent
+    PokemonLinkComponent,
+    PokeHeightPipe,
+    PokeWeightPipe
   ],
   imports: [
     BrowserModule,

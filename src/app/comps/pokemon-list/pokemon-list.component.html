@@ -1,8 +1,11 @@
-<table class="table-pokemon" (swipeleft)="nextPage()"  (swiperight)="prevPage()">
+<table class="table-pokemon" (swipeleft)="nextPage()" (swiperight)="prevPage()">
     <tr>
         <th class="small">No.</th>
         <th class="small"></th>
-        <th>Pokemon</th>
+        <th>
+            Pokemon
+            <input #inputfilter placeholder="filter" class="hide-on-mobile" (keyup)="filterSearch($event)">
+        </th>
         <th class="medium">Type</th>
         <th class="medium hide-on-mobile">Abilities</th>
     </tr>
@@ -46,7 +49,7 @@
         <a class="poke-font" [ngClass]="{'disabled': isLastPage()}" (click)="lastPage()">&#187;</a>
     </div>
 
-    <div class="poke-count drop hide-on-mobile" *ngIf="pokemonCount">
+    <div class="poke-count drop hide-on-mobile pokemon-shadow" *ngIf="pokemonCount">
         {{pokemonCount}} Pokemons
     </div>
 </div>

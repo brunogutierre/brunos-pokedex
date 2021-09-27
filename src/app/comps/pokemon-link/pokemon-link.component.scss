@@ -1,3 +1,8 @@
 a {
     cursor: pointer;
+    display: block;
+}
+
+a:hover {
+    animation: shake 0.3s 2;
 }
