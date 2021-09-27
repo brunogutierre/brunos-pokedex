@@ -3,6 +3,10 @@
     src: url(/assets/fonts/Pokemon.ttf);
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 15px;
@@ -25,6 +29,14 @@ body {
     text-transform: capitalize;
 }
 
+.pokemon-shadow {
+    box-shadow: 2px 2px 3px #666;
+
+    &:hover {
+        box-shadow: 2px 2px 3px #333;
+    }
+}
+
 .drop {
     padding: 5px 20px;
     border-radius: 5px;
@@ -35,6 +47,59 @@ body {
 }
 
 table {
-    th.small, td.small { width: 50px; }
+    th.small, td.small { width: 65px; }
+    th.medium, td.medium { width: 200px; }
     th.center, td.center { text-align: center; }
+}
+
+/* Hide spin button on input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* default input style */
+input {
+    text-align: center;
+    font-size: 1.8em;
+    padding: 0px 15px 5px 15px;
+    width: 4em;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    border: 1px solid #ffcb05;
+    box-shadow: 2px 2px 3px #777, inset 2px 2px 3px #777;
+    font-family: 'pokemon-font';
+    line-height: 2em;
+    margin: 0 30px;
+}
+
+/* Animations */
+@keyframes shake { 
+    30% { transform:rotate(5deg); }
+    70% { transform:rotate(-5deg); }
+}
+
+
+/* mobile */
+.show-on-mobile {
+    display: none;
+}
+
+@media only screen and (hover: none) and (pointer: coarse){
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .show-on-mobile {
+        display: block;
+    }
+
+    input {
+        font-size: 1em;
+    }
 }

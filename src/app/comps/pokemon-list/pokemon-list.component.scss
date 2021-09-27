@@ -15,9 +15,19 @@
     }
 }
 
+.tr-loading td {
+    text-align: center;
+    height: 66px;
+}
+
 .selectable-table-line:hover {
     background-color: rgba(255, 255, 255, 0.05);
     cursor: pointer;
+
+    span.animated {
+        animation: shake 0.3s 2;
+        display: inline-block;
+    }
 }
 
 .table-footer {
@@ -57,5 +67,25 @@
     .poke-count {
         float: right;
         margin-left: -10em;
+    }
+}
+
+
+/* mobile */
+@media only screen and (hover: none) and (pointer: coarse){
+    .table-pokemon {
+        margin-bottom: 4.5em;
+        
+        th {
+            padding: 0;
+        }
+    }
+
+    .table-footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100vw;
+        padding-bottom: 1em;
     }
 }

@@ -1,4 +1,10 @@
+<div *ngIf="pokemon" class="modal-detail-back" (click)="close()"></div>
+
 <div *ngIf="pokemon" class="detail-cont">
+    <div class="show-on-mobile close-button" (click)="close()">
+        X
+    </div>
+
     <div class="detail-image">
         <img alt="pokemon image" [src]="getBestImagem()">
         <div class="poke-shadow"></div>
@@ -61,8 +67,8 @@
                 Variations
             </h3>
 
-            <div class="alt-list" *ngIf="pokemon.alt_forms.length > 0">
-                <div *ngFor="let alt of pokemon.alt_forms" class="alt-list-cont">
+            <div class="alt-list" *ngIf="pokemon.alt_forms && pokemon.alt_forms.length > 0">
+                <div *ngFor="let alt of pokemon.alt_forms" class="alt-list-cont pokemon-shadow">
                     <app-pokemon-link [id]="alt"></app-pokemon-link>
                 </div>
             </div>

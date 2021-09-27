@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 .app-cont {
     margin: auto;
     width: min(1200px, 100%);
@@ -17,4 +13,17 @@
     text-align: center;
     line-height: 2em;
     margin-bottom: 40px;
+}
+
+/* Mobile */
+@media only screen and (hover: none) and (pointer: coarse){
+    .app-cont {
+        width: 100%;
+        padding: 0 0 40px 0;
+    }
+
+    .toolbar {
+        font-size: 8vw;
+        margin-bottom: 1em;
+    }
 }

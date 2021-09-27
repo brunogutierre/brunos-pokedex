@@ -25,7 +25,6 @@ export class PokemonDetailComponent implements OnInit {
 
   public setPokemon(pokemon: Pokemon | null) {
     this.pokemon = pokemon;
-    console.log(this.pokemon)
 
     if (this.pokemon) {
       if (!this.pokemon.hasSpecies()) {
@@ -40,6 +39,10 @@ export class PokemonDetailComponent implements OnInit {
         });
       }
     }
+  }
+
+  close(): void {
+    this.setPokemon(null);
   }
 
   getBestImagem(): string {

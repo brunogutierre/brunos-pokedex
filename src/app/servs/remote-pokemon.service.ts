@@ -20,7 +20,7 @@ export class RemotePokemonService {
     if (!pokemon) {
       return this.httpClient.get(this.urlBase + 'pokemon/' + id).pipe(
         map(p => new Pokemon(p)),
-        tap(p => {this.getPokemonSpecie(p.id).subscribe(s => {
+        tap(p => {this.getPokemonSpecie(p.species_id).subscribe(s => {
           p.setSpecies(s);
           this.localStoreService.savePokemon(p);
         })}));

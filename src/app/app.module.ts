@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG, HammerModule } from '@angular/platform-browser';
+import * as Hammer from 'hammerjs';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,12 @@ import { PokemonSpriteComponent } from './comps/pokemon-sprite/pokemon-sprite.co
 import { ReduceAtrNamePipe } from './pipes/reduce-atr-name.pipe';
 import { EvolutionPhaseComponent } from './comps/evolution-phase/evolution-phase.component';
 import { PokemonLinkComponent } from './comps/pokemon-link/pokemon-link.component';
+
+export class MyHammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    swipe: { direction: Hammer.DIRECTION_ALL },
+  };
+}
 
 @NgModule({
   declarations: [
@@ -26,9 +33,15 @@ import { PokemonLinkComponent } from './comps/pokemon-link/pokemon-link.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HammerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

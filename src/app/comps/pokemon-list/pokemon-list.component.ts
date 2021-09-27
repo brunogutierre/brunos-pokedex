@@ -9,7 +9,7 @@ import { Util } from 'src/app/util/Util';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  pokemons: Pokemon[] = [];
+  pokemons: (Pokemon | null)[] = [];
   pokemonCount: number = 0;
   page: number = 0;
 
@@ -28,6 +28,8 @@ export class PokemonListComponent implements OnInit {
         this.pokemons = [];
 
         list.results.forEach((pokemon:any, index:number) => {
+          this.pokemons[index] = null;
+
           this.remotePokemonService.getPokemon(Util.getIdFromUrl(pokemon.url) || '').subscribe(poke => {
             this.pokemons[index] = poke;
           })
@@ -85,5 +87,14 @@ export class PokemonListComponent implements OnInit {
 
   getLastPage(): number {
     return Math.floor(this.pokemonCount / this.remotePokemonService.pageSize);
+  }
+
+  setPage(event: any): void {
+    if (event && event.keyCode === 13) {
+      this.toPage(parseInt(event.target.value) - 1);
+    }
+    else if (parseInt(event.target.value) > this.getLastPage()) {
+      this.page = this.getLastPage();
+    }
   }
 }

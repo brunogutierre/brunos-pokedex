@@ -1,3 +1,15 @@
+.modal-detail-back {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vw;
+
+  background-color: #7777;
+
+  z-index: 20;
+}
+
 .border-poke {
   border-bottom: 3px solid black;
 
@@ -48,6 +60,16 @@
   flex-wrap: wrap;
 
   margin-bottom: 20px;
+  z-index: 30;
+
+  position: fixed;
+  top: 10vh;
+  left: calc(50vw - 600px);
+  width: 1200px;
+  background-color: white;
+
+  padding: 30px;
+  border-radius: 20px;
 
   .detail-image {
     max-width: 100%;
@@ -93,7 +115,7 @@
     h2 {
       font-size: 3em;
       margin: 0;
-      line-height: 80px;
+      line-height: 2em;
     }
 
     h2::after {
@@ -104,7 +126,7 @@
       margin-left: 10px;
       font-size: 2em;
       font-weight: 100;
-      line-height: 80px;
+      line-height: 2em;
 
       display: inline-block;
     }
@@ -112,12 +134,13 @@
     .detail-element-list {
       float: right;
       padding-top: 20px;
-      line-height: 80px;
+      line-height: 2em;
+      margin-bottom: -20px;
     }
 
     .detail-text-decoration {
       font-weight: 100;
-      font-size: 18px;
+      font-size: 1.2em;
       font-style: italic;
       color: #333;
       overflow-wrap: anywhere;
@@ -147,7 +170,8 @@
       overflow: hidden;
       margin: 5px 10px;
 
-      max-width: 90px;
+      min-width: 5em;
+      max-width: 9em;
 
       &>div {
         padding-bottom: 16px;
@@ -213,5 +237,98 @@
 
   .detail-bio {
     width: 100%;
+  }
+}
+
+.close-button {
+  position: absolute;
+  right: 10px;
+  background-color: darkorange;
+  padding: 0 10px;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 50px;
+  color: #6c2800;
+  font-weight: bolder;
+  font-family: sans-serif;
+  cursor: pointer;
+  font-size: 1.5em;
+  text-align: center;
+  box-shadow: 2px 2px 5px #9d9d9d;
+  z-index: 40;
+}
+
+
+/* Mobile */
+@media only screen and (hover: none) and (pointer: coarse){
+  .modal-detail-back {
+    display: none;
+  }
+
+  .detail-cont {
+    margin-bottom: 0;
+    z-index: 30;
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+  
+    padding: 25px;
+    border-radius: 0;
+
+    overflow-y: auto;
+
+    .detail-image {
+      border-radius: 0;
+      width: 100%;
+      margin: -30px -30px 0 -30px;
+      max-width: none;
+      min-width: 100%;
+    }
+
+    .detail-header {
+      padding: 5px 0;
+
+      h2 {
+        font-size: 2.2em;
+        margin: 0;
+        display: block;
+        margin-bottom: -20px;
+
+        &::after {
+          content: "";
+        }
+      }
+
+      .detail-desc-type {
+        margin-left: 0;
+        font-size: 1.2em;
+      }
+
+      .detail-atr-list {
+        height: auto;
+      }
+
+      .detail-element-list {
+        padding: 0;
+        margin-top: -75px;
+      }
+    }
+
+    .detail-evo-cont, .detail-alt-cont {
+      width: 100%;
+    }
+
+    .detail-atr-list {
+      flex-wrap: wrap;
+    }
+
+    .extra-data {
+      margin-bottom: 85px;
+    }
   }
 }

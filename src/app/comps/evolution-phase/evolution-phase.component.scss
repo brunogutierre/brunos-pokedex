@@ -22,3 +22,10 @@
     flex-direction: row;
     align-items: center;
 }
+
+/* mobile */
+@media only screen and (hover: none) and (pointer: coarse){
+    .evolution-cont {
+        margin: 10px 5px;
+    }
+}

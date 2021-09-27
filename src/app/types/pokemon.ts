@@ -9,6 +9,7 @@ export class Pokemon {
     name: string;
     id: number;
     evolution_id?: number | string | null;
+    species_id: number;
     order?: number;
 
     desc_type?: string;
@@ -16,6 +17,7 @@ export class Pokemon {
     text_decoration: string = '';
 
     url_image: string;
+    url_image_back: string;
     url_image_mini: string;
 
     atributes: any[] = [];
@@ -27,10 +29,12 @@ export class Pokemon {
     constructor(pokemon: any) {
         this.name = pokemon.name;
         this.id = pokemon.id;
+        this.species_id = parseInt(Util.getIdFromUrl(pokemon.species.url) || this.id + '')
 
         this.types = (<PokemonType[]>pokemon.types).sort((a, b) => (a.slote || 0) - (b.slote || 0));
         // TODO: image default
         this.url_image = pokemon.sprites.other.dream_world.front_default || pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default || '';
+        this.url_image_back = pokemon.sprites.other.dream_world.front_default || pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default || '';
         this.url_image_mini = pokemon.sprites.front_default || '';
 
         this.atributes = pokemon.stats.map((state:State) => new Object({'base': state.base_stat || 0, 'effort': state.effort || 0, 'name': state.stat?.name || ''}));
@@ -50,7 +54,7 @@ export class Pokemon {
 
         this.biology.color = species.color.name;
         this.biology.shape = species.shape.name;
-        this.biology.habitat = species.habitat.name;
+        this.biology.habitat = species.habitat?.name;
 
         this.alt_forms = species.varieties.map(((variety: { pokemon: { url: string; }; }) => Util.getIdFromUrl(variety.pokemon.url)));
     }
