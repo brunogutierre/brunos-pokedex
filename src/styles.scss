@@ -25,6 +25,15 @@ body {
     text-transform: capitalize;
 }
 
+.drop {
+    padding: 5px 20px;
+    border-radius: 5px;
+    background-color: #ddd;
+    text-transform: capitalize;
+    display: inline-block;
+    margin: 0 10px;
+}
+
 table {
     th.small, td.small { width: 50px; }
     th.center, td.center { text-align: center; }

@@ -69,8 +69,10 @@ export class PokemonListComponent implements OnInit {
   }
 
   toPage(page: number) {
-    this.page = Math.min(Math.max(0, page), this.getLastPage());
-    this.refreshList();
+    if (page != this.page) {
+      this.page = Math.min(Math.max(0, page), this.getLastPage());
+      this.refreshList();
+    }
   }
 
   isLastPage(): boolean {

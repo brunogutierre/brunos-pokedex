@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { PokeComunicationService } from 'src/app/servs/poke-comunication.service';
 import { RemotePokemonService } from 'src/app/servs/remote-pokemon.service';
 import { Pokemon } from 'src/app/types/pokemon';
 
@@ -12,7 +13,7 @@ export class PokemonLinkComponent implements OnInit, OnChanges {
 
   pokemon: Pokemon | null = null;
 
-  constructor(private remotePokemonService: RemotePokemonService) { }
+  constructor(private remotePokemonService: RemotePokemonService, private pokeComunicationService: PokeComunicationService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +27,6 @@ export class PokemonLinkComponent implements OnInit, OnChanges {
   }
 
   showDetails() {
-
+    this.pokeComunicationService.changePokemon(this.pokemon);
   }
 }

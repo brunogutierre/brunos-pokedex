@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
+import { PokeComunicationService } from 'src/app/servs/poke-comunication.service';
 import { RemotePokemonService } from 'src/app/servs/remote-pokemon.service';
 import { Pokemon } from 'src/app/types/pokemon';
 
@@ -11,12 +12,15 @@ export class PokemonDetailComponent implements OnInit {
   pokemon: Pokemon | null = null;
   evolution: any;
 
-  constructor(private remotePokemonService: RemotePokemonService) {
+  constructor(private remotePokemonService: RemotePokemonService, private pokeComunicationService: PokeComunicationService) {
 
   }
 
   ngOnInit(): void {
-
+    this.pokeComunicationService.subscriber$.subscribe(pokemon => {
+      if (pokemon instanceof Pokemon || pokemon === null)
+        this.setPokemon(pokemon);
+    });
   }
 
   public setPokemon(pokemon: Pokemon | null) {

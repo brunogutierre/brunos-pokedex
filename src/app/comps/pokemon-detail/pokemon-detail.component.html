@@ -38,7 +38,7 @@
             </h3>
 
             <div>
-                <div *ngFor="let abt of pokemon.abilities" class="drop-ability">
+                <div *ngFor="let abt of pokemon.abilities" class="drop">
                     {{abt.name}}
                 </div>
             </div>
@@ -61,10 +61,14 @@
                 Variations
             </h3>
 
-            <div class="alt-list">
+            <div class="alt-list" *ngIf="pokemon.alt_forms.length > 0">
                 <div *ngFor="let alt of pokemon.alt_forms" class="alt-list-cont">
                     <app-pokemon-link [id]="alt"></app-pokemon-link>
                 </div>
+            </div>
+
+            <div class="alt-list" *ngIf="!pokemon.alt_forms || pokemon.alt_forms.length === 0">
+                No Variation Forms
             </div>
         </div>
 
@@ -91,21 +95,21 @@
                 <div class="detail-atr">
                     <div>
                         <label>Color</label>
-                        {{pokemon.biology.color}}
+                        {{pokemon.biology.color || '-'}}
                     </div>
                 </div>
 
                 <div class="detail-atr">
                     <div>
                         <label>Shape</label>
-                        {{pokemon.biology.shape}}
+                        {{pokemon.biology.shape || '-'}}
                     </div>
                 </div>
 
                 <div class="detail-atr">
                     <div>
                         <label>Habitat</label>
-                        {{pokemon.biology.habitat}}
+                        {{pokemon.biology.habitat || '-'}}
                     </div>
                 </div>
             </div>
