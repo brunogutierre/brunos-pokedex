@@ -24,7 +24,7 @@ body {
     color: $pokemon-title-color;
     letter-spacing: 0.07em;
 
-    text-shadow: 0.1em 0.1em 0px pokemon-title-shadow;
+    text-shadow: 0.1em 0.1em 0px $pokemon-title-shadow;
 }
 
 .pokemon-name {
