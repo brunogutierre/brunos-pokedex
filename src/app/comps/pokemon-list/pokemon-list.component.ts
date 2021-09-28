@@ -51,7 +51,7 @@ export class PokemonListComponent implements OnInit {
 
           this.remotePokemonService.getPokemon(Util.getIdFromUrl(pokemon.url) || '')
             .pipe(tap(() => {
-              setTimeout(() => {this.loading = false;}, 1000);
+              setTimeout(() => {this.loading = false;}, 500);
             }))
             .subscribe(poke => {
               this.pokemons[index] = poke;
@@ -75,7 +75,7 @@ export class PokemonListComponent implements OnInit {
 
       this.remotePokemonService.getPokemon(Util.getIdFromUrl(pokemon.url) || '')
         .pipe(tap(() => {
-          setTimeout(() => {this.loading = false;}, 1000);
+          setTimeout(() => {this.loading = false;}, 500);
         }))
         .subscribe(poke => {
           this.pokemons[index] = poke;
