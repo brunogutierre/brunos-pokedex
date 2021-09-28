@@ -1,19 +1,21 @@
-.border-black { border: 0 solid #000000; border-right-width: 3px; }
-.border-blue { border: 0 solid #2a2cbe; border-right-width: 3px; }
-.border-brown { border: 0 solid #7a5433; border-right-width: 3px; }
-.border-gray { border: 0 solid #757575; border-right-width: 3px; }
-.border-green { border: 0 solid #4f9b31; border-right-width: 3px; }
-.border-pink { border: 0 solid #e79090; border-right-width: 3px; }
-.border-purple { border: 0 solid #77287e; border-right-width: 3px; }
-.border-red { border: 0 solid #be0000; border-right-width: 3px; }
-.border-white { border: 0 solid #cecece; border-right-width: 3px; }
-.border-yellow { border: 0 solid #c4c716; border-right-width: 3px; }
+@import "../../../styles_variables.scss";
+
+.border-black { border: 0 solid $color-black; border-right-width: 3px; }
+.border-blue { border: 0 solid $color-blue; border-right-width: 3px; }
+.border-brown { border: 0 solid $color-brown; border-right-width: 3px; }
+.border-gray { border: 0 solid $color-gray; border-right-width: 3px; }
+.border-green { border: 0 solid $color-green; border-right-width: 3px; }
+.border-pink { border: 0 solid $color-pink; border-right-width: 3px; }
+.border-purple { border: 0 solid $color-purple; border-right-width: 3px; }
+.border-red { border: 0 solid $color-red; border-right-width: 3px; }
+.border-white { border: 0 solid $color-white; border-right-width: 3px; }
+.border-yellow { border: 0 solid $color-yellow; border-right-width: 3px; }
 
 .grade-tools {
     display: flex; 
     border-top: 0 solid #222; 
     margin: 0 -40px 30px -40px; 
-    background-color: #fcfcfc;
+    background-color: $back-title-color;
     padding: 2px 60px 12px 60px;
     box-shadow: 0px 4px 3px #747474;
 
@@ -52,7 +54,7 @@
         flex: 2; 
         text-align: right;
 
-        a {
+        a, button {
             color: #89400c; 
             font-weight: 900; 
             font-family: monospace; 
@@ -69,12 +71,12 @@
             display: inline-block;
         }
 
-        a:hover:not(.disabled) {
+        a:hover:not(.disabled), button:hover:not(.disabled) {
             background-color: #ffdc4f;
             box-shadow: 2px 2px 3px #999; 
         }
 
-        a.disabled {
+        a.disabled, button.disabled {
             background-color: #999;
             color: #444;
             cursor: default !important;
@@ -101,7 +103,7 @@
         &:hover {
             transform: scale(1.05);
 
-            span.animated {
+            .animated {
                 animation: shake 0.3s 2;
                 display: inline-block;
             }
@@ -141,6 +143,7 @@
                     font-size: 0.9em; 
                     color: #333; 
                     font-weight: 400;
+                    display: inline-block;
                 }
             }
 

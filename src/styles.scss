@@ -1,3 +1,5 @@
+@import "styles_variables.scss";
+
 @font-face {
     font-family: pokemon-font;
     src: url(/assets/fonts/Pokemon.ttf);
@@ -19,10 +21,10 @@ body {
 
 .poke-font {
     font-family: 'pokemon-font';
-    color: #ffcb05;
+    color: $pokemon-title-color;
     letter-spacing: 0.07em;
 
-    text-shadow: 0.1em 0.1em 0px #3c5aa6;
+    text-shadow: 0.1em 0.1em 0px pokemon-title-shadow;
 }
 
 .pokemon-name {
@@ -76,7 +78,14 @@ input {
     box-shadow: inset 2px 2px 3px #9f9f9f;
     line-height: 2em;
     margin: 0 15px;
+}
 
+button {
+    border-width: 0;
+}
+
+figure, p {
+    margin: 0;
 }
 
 /* Animations */

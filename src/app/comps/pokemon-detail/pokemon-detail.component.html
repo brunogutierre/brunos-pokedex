@@ -1,19 +1,19 @@
-<div *ngIf="pokemon" class="modal-detail-back" (click)="close()"></div>
+<div *ngIf="pokemon" class="modal-detail-back" (click)="close()" aria-hidden="true"></div>
 
-<div *ngIf="pokemon" class="detail-cont">
-    <div class="close-button" (click)="close()">
+<div *ngIf="pokemon" class="detail-cont" aria-modal="true">
+    <button class="close-button" (click)="close()" aria-label="Close" tabindex="2">
         X
-    </div>
+    </button>
 
-    <div class="hide-on-mobile next-button {{nextPokemonId? '':'disabled'}}" (click)="nextPokemon()">
+    <button class="hide-on-mobile next-button {{nextPokemonId? '':'disabled'}}" (click)="nextPokemon()" aria-label="Next pokemon" tabindex="3">
         &#062;
-    </div>
+    </button>
 
-    <div class="hide-on-mobile prev-button {{prevPokemonId? '':'disabled'}}" (click)="prevPokemon()">
+    <button class="hide-on-mobile prev-button {{prevPokemonId? '':'disabled'}}" (click)="prevPokemon()" aria-label="Preview pokemon"  tabindex="4">
         &#060;
-    </div>
+    </button>
 
-    <div class="detail-cont-inside" (swipeleft)="nextPokemon()" (swiperight)="prevPokemon()">
+    <div class="detail-cont-inside" (swipeleft)="nextPokemon()" (swiperight)="prevPokemon()" tabindex="1" aria-label="pokemon card">
         <div class="detail-image">
             <img alt="pokemon image" [src]="getBestImagem()">
             <div class="poke-shadow"></div>

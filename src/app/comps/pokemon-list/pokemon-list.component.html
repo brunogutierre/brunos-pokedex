@@ -1,32 +1,32 @@
 <div class="grade-tools">
     <div class="search-tool">
         <svg class="search-icon" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
-        <input #inputfilter placeholder="{{pokemonCount}} Pokémons" (keyup)="filterSearch($event)">
+        <input #inputfilter placeholder="{{pokemonCount}} Pokémons" (keyup)="filterSearch($event)" aria-label="search input" tabindex="2">
         <span class="hide-on-mobile clear-icon" (click)="clearSearch()">&#10006;</span>
     </div>
 
     <div class="pagination-tool">
-        <a class="hide-on-mobile" [ngClass]="{'disabled': page === 0}" (click)="firstPage()">&#171;</a>
-        <a class="hide-on-mobile" [ngClass]="{'disabled': page === 0}" (click)="prevPage()">&#060;</a>
+        <button class="hide-on-mobile" [ngClass]="{'disabled': page === 0}" (click)="firstPage()" aria-label="first page" tabindex="3">&#171;</button>
+        <button class="hide-on-mobile" [ngClass]="{'disabled': page === 0}" (click)="prevPage()" aria-label="preview page" tabindex="4">&#060;</button>
 
-        <input type="number" ngModel [value]="page+1" (keypress)="setPage($event)" min="1" [max]="getLastPage() + 1">
+        <input type="number" ngModel [value]="page+1" (keypress)="setPage($event)" min="1" [max]="getLastPage() + 1" aria-label="page input" tabindex="5">
 
-        <a class="hide-on-mobile" [ngClass]="{'disabled': isLastPage()}" (click)="nextPage()">&#062;</a>
-        <a class="hide-on-mobile" [ngClass]="{'disabled': isLastPage()}" (click)="lastPage()">&#187;</a>
+        <button class="hide-on-mobile" [ngClass]="{'disabled': isLastPage()}" (click)="nextPage()" aria-label="next page" tabindex="6">&#062;</button>
+        <button class="hide-on-mobile" [ngClass]="{'disabled': isLastPage()}" (click)="lastPage()" aria-label="last page" tabindex="7   ">&#187;</button>
     </div>
 </div>
 
-<div class="poke-field" (swipeleft)="nextPage()" (swiperight)="prevPage()">
+<div class="poke-field" (swipeleft)="nextPage()" (swiperight)="prevPage()" tabindex="1" aria-label="pokemon list">
     <div *ngIf="loading" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(180, 180, 180, 0.3);">
-        <img src="../../../assets/pokeball.png" alt="" style="    width: 64px; height: 64px; left: calc(50vw - 32px); position: absolute; top: calc(50vh - 32px); animation: rotate 1s infinite;">
+        <img src="../../../assets/pokeball.png" alt="loading icon" style="width: 64px; height: 64px; left: calc(50vw - 32px); position: absolute; top: calc(50vh - 32px); animation: rotate 1s infinite;">
     </div>
 
     <ng-container *ngFor="let pokemon of pokemons">
         <div *ngIf="pokemon && pokemon.order" class="poke-card" (click)="showPokemon(pokemon)">
             <div class="card-image-cont {{'border-' + (pokemon.biology.color || 'grey' )}}">
-                <span class="animated">
-                    <img [src]="pokemon.url_image_mini" alt="">
-                </span>
+                <figure class="animated">
+                    <img [src]="pokemon.url_image_mini" alt="small image of {{pokemon.name}}">
+                </figure>
             </div>
 
             <div class="card-body">
@@ -37,13 +37,13 @@
                 <h2>
                     {{pokemon.name}}
 
-                    <span class="title-detail">
+                    <p class="title-detail">
                         {{pokemon.order | positionFormat}}
-                    </span>
+                    </p>
                 </h2>
 
                 <div class="body-content">
-                    <div class="desc-ability drop" *ngFor="let ability of pokemon.abilities; let i = index">
+                    <div class="desc-ability drop" *ngFor="let ability of pokemon.abilities; let i = index" aria-label="ability">
                         {{i > 1? '+' : ability.name}}
                     </div>
                 </div>

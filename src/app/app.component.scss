@@ -1,3 +1,5 @@
+@import "../styles_variables.scss";
+
 .app-cont {
     margin: auto;
     width: min(1200px, 100%);
@@ -15,7 +17,7 @@
     text-align: center;
     line-height: 2em;
     margin: 0 -40px 0px -40px;
-    background-color: #fbfbfb;
+    background-color: $back-title-color;
 }
 
 /* Mobile */

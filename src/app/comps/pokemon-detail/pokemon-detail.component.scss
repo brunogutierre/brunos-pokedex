@@ -1,3 +1,5 @@
+@import "../../../styles_variables.scss";
+
 .modal-detail-back {
   position: fixed;
   left: 0;
@@ -13,16 +15,16 @@
 .border-poke {
   border-bottom: 3px solid black;
 
-  &.black { border-color: #111;}
-  &.blue { border-color: #286ac0; }
-  &.brown { border-color: #703528; }
-  &.gray { border-color: #777; }
-  &.green { border-color: #149b0f; }
-  &.pink { border-color: #dd8686; }
-  &.purple { border-color: #77287e; }
-  &.red { border-color: #be0000; }
-  &.white { border-color: #b4b4b4; }
-  &.yellow { border-color: #d1d40e; }
+  &.black { border-color: $color-black;}
+  &.blue { border-color: $color-blue; }
+  &.brown { border-color: $color-brown; }
+  &.gray { border-color: $color-gray; }
+  &.green { border-color: $color-green; }
+  &.pink { border-color: $color-pink; }
+  &.purple { border-color: $color-purple; }
+  &.red { border-color: $color-red; }
+  &.white { border-color: $color-white; }
+  &.yellow { border-color: $color-yellow; }
 }
 
 .detail-cont {
@@ -35,7 +37,7 @@
   max-width: calc(100vw - 20px);
   width: 1200px;
   max-height: 80vh;
-  background-color: white;
+  background-color: $back-card-color;
   border-radius: 20px;
 
   background: linear-gradient(
@@ -49,7 +51,7 @@
       rgb(210 216 217) 90%, 
       rgb(219 230 231) 100%);
 
-  border: 7px solid white;
+  border: 7px solid $back-card-color;
 
   .detail-cont-inside {
     display: flex;
@@ -74,7 +76,7 @@
     width: 300px;
     min-height: 100px;
 
-    background-color: #ddd;
+    background-color: $back-image-color;
     border-radius: 10px;
     padding: 20px;
 
@@ -161,7 +163,7 @@
     .detail-atr {
       flex: 1;
 
-      background-color: #ddd;
+      background-color: $back-grey;
       border-radius: 5px;
       text-align: center;
 
@@ -181,7 +183,7 @@
         line-height: 2em;
         font-weight: 900;
         text-transform: uppercase;
-        background-color: #c9c9c9;
+        background-color: $back-dark-grey;
 
         margin-bottom: 12px;
       }
@@ -261,7 +263,7 @@
 .next-button {
   top: calc(50% - 10px);
   right: 0;
-  background-color: #ffcb05;
+  background-color: $pokemon-title-color;
   font-size: 1.2em;
   margin-right: -10px;
 }
@@ -269,7 +271,7 @@
 .prev-button {
   top: calc(50% - 10px);
   left: 0;
-  background-color: #ffcb05;
+  background-color: $pokemon-title-color;
   font-size: 1.2em;
   margin-left: -10px;
 }

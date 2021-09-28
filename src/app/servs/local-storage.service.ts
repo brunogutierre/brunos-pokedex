@@ -13,7 +13,10 @@ export class LocalStorageService {
   }
 
   getPokemon(id: string): any {
-    return this.localDB[id];
+    if (this.localDB[id])
+      return Object.assign(new Pokemon(null), this.localDB[id]);
+    else
+      return null;
   }
 
   savePokemon(pokemon: Pokemon) {
