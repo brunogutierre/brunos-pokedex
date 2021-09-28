@@ -3,17 +3,38 @@
     height: 64px;
     margin: -8px 0;
     border-radius: 100%;
-    background: linear-gradient( 0deg, #ccc 0%, #ddd0 35%);
+    background: linear-gradient( 0deg, #ccc 0%, #ddd0 25%);
     border-bottom: 2px solid #bbb;
 }
 
-.poke-color-black { background: linear-gradient( 0deg, rgba(73, 73, 73, .6) 0%, #ddd0 35%); border-color: #00000066; }
-.poke-color-blue { background: linear-gradient( 0deg, rgba(49, 124, 223, .6) 0%, #ddd0 35%); border-color: #38398366; }
-.poke-color-brown { background: linear-gradient( 0deg, rgba(112, 99, 63, .6) 0%, #ddd0 35%); border-color: #523f2e66; }
-.poke-color-gray { background: linear-gradient( 0deg, rgba(187, 187, 187, .6) 0%, #ddd0 35%); border-color: #66666666; }
-.poke-color-green { background: linear-gradient( 0deg, rgba(30, 204, 24, .6) 0%, #ddd0 35%); border-color: #486c3a66; }
-.poke-color-pink { background: linear-gradient( 0deg, rgba(255, 195, 195, .6) 0%, #ddd0 35%); border-color: #e7909066; }
-.poke-color-purple { background: linear-gradient( 0deg, rgba(172, 80, 190, .6) 0%, #ddd0 35%); border-color: #77287e66; }
-.poke-color-red { background: linear-gradient( 0deg, rgba(209, 84, 84, .6) 0%, #ddd0 35%); border-color: #be000066; }
-.poke-color-white { background: linear-gradient( 0deg, rgba(255, 255, 255, .6) 0%, #ddd0 35%); border-color: #c2c2c266; }
-.poke-color-yellow { background: linear-gradient( 0deg, rgba(243, 233, 99, .6) 0%, #ddd0 35%); border-color: #fbff0066; }
+.sprite-normal {
+    width: 96px;
+    height: 96px;
+    margin: -8px 0;
+    border-radius: 100%;
+    background: linear-gradient( 0deg, #ccc 0%, #ddd0 25%);
+    border-bottom: 2px solid #bbb;
+}
+
+.poke-color-black { background: linear-gradient( 0deg, rgba(73, 73, 73, .6) 0%, #ddd0 25%); border-color: #00000066; }
+.poke-color-blue { background: linear-gradient( 0deg, rgba(49, 124, 223, .6) 0%, #ddd0 25%); border-color: #38398366; }
+.poke-color-brown { background: linear-gradient( 0deg, rgba(112, 99, 63, .6) 0%, #ddd0 25%); border-color: #523f2e66; }
+.poke-color-gray { background: linear-gradient( 0deg, rgba(187, 187, 187, .6) 0%, #ddd0 25%); border-color: #66666666; }
+.poke-color-green { background: linear-gradient( 0deg, rgba(30, 204, 24, .6) 0%, #ddd0 25%); border-color: #486c3a66; }
+.poke-color-pink { background: linear-gradient( 0deg, rgba(255, 195, 195, .6) 0%, #ddd0 25%); border-color: #e7909066; }
+.poke-color-purple { background: linear-gradient( 0deg, rgba(172, 80, 190, .6) 0%, #ddd0 25%); border-color: #77287e66; }
+.poke-color-red { background: linear-gradient( 0deg, rgba(209, 84, 84, .6) 0%, #ddd0 25%); border-color: #be000066; }
+.poke-color-white { background: linear-gradient( 0deg, rgba(255, 255, 255, .6) 0%, #ddd0 25%); border-color: #c2c2c266; }
+.poke-color-yellow { background: linear-gradient( 0deg, rgba(243, 233, 99, .6) 0%, #ddd0 25%); border-color: #fbff0066; }
+
+@media only screen and (hover: none) and (pointer: coarse){
+    .sprite-mini {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .sprite-normal {
+        width: 64px;
+        height: 64px;
+    }
+}

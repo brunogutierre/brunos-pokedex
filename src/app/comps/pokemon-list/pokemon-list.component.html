@@ -1,55 +1,53 @@
-<table class="table-pokemon" (swipeleft)="nextPage()" (swiperight)="prevPage()">
-    <tr>
-        <th class="small">No.</th>
-        <th class="small"></th>
-        <th>
-            Pokemon
-            <input #inputfilter placeholder="filter name" class="hide-on-mobile" (keyup)="filterSearch($event)">
-        </th>
-        <th class="medium">Type</th>
-        <th class="medium hide-on-mobile">Abilities</th>
-    </tr>
+<div class="grade-tools">
+    <div class="search-tool">
+        <svg class="search-icon" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+        <input #inputfilter placeholder="{{pokemonCount}} Pokémons" (keyup)="filterSearch($event)">
+        <span class="hide-on-mobile clear-icon" (click)="clearSearch()">&#10006;</span>
+    </div>
 
-    <ng-container *ngFor="let pokemon of pokemons">
-        <tr *ngIf="!pokemon || !pokemon.order" class="tr-loading">
-            <td colspan="5">
-                Loading...
-            </td>            
-        </tr>
-
-        <tr *ngIf="pokemon && pokemon.order" class="selectable-table-line" (click)="showPokemon(pokemon)">
-            <td class="center">{{pokemon.order | positionFormat}}</td>
-            <td>
-                <span class="animated">
-                    <app-pokemon-sprite [src]="pokemon.url_image_mini" [color]="pokemon.biology.color"></app-pokemon-sprite>
-                </span>
-            </td>
-            <td class="center pokemon-name">{{pokemon.name}}</td>
-            <td class="center pokemon-name">
-                <app-banner-type *ngFor="let type of pokemon.types" [type]="type.type.name" size="m"></app-banner-type>
-            </td>
-
-            <td class="center pokemon-name hide-on-mobile">
-                <div class="desc-ability" *ngFor="let ability of pokemon.abilities">
-                    {{ability.name}}
-                </div>
-            </td>
-        </tr>
-    </ng-container>
-</table>
-
-<div class="table-footer">
-    <div class="menu-pagenation">
-        <a class="poke-font" [ngClass]="{'disabled': page === 0}" (click)="firstPage()">&#171;</a>
-        <a class="poke-font" [ngClass]="{'disabled': page === 0}" (click)="prevPage()">&#060;</a>
+    <div class="pagination-tool">
+        <a class="hide-on-mobile" [ngClass]="{'disabled': page === 0}" (click)="firstPage()">&#171;</a>
+        <a class="hide-on-mobile" [ngClass]="{'disabled': page === 0}" (click)="prevPage()">&#060;</a>
 
         <input type="number" ngModel [value]="page+1" (keypress)="setPage($event)" min="1" [max]="getLastPage() + 1">
 
-        <a class="poke-font" [ngClass]="{'disabled': isLastPage()}" (click)="nextPage()">&#062;</a>
-        <a class="poke-font" [ngClass]="{'disabled': isLastPage()}" (click)="lastPage()">&#187;</a>
+        <a class="hide-on-mobile" [ngClass]="{'disabled': isLastPage()}" (click)="nextPage()">&#062;</a>
+        <a class="hide-on-mobile" [ngClass]="{'disabled': isLastPage()}" (click)="lastPage()">&#187;</a>
+    </div>
+</div>
+
+<div class="poke-field" (swipeleft)="nextPage()" (swiperight)="prevPage()">
+    <div *ngIf="loading" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(180, 180, 180, 0.3);">
+        <img src="../../../assets/pokeball.png" alt="" style="    width: 64px; height: 64px; left: calc(50vw - 32px); position: absolute; top: calc(50vh - 32px); animation: rotate 1s infinite;">
     </div>
 
-    <div class="poke-count drop hide-on-mobile pokemon-shadow" *ngIf="pokemonCount">
-        {{pokemonCount}} Pokemons
-    </div>
+    <ng-container *ngFor="let pokemon of pokemons">
+        <div *ngIf="pokemon && pokemon.order" class="poke-card" (click)="showPokemon(pokemon)">
+            <div class="card-image-cont {{'border-' + (pokemon.biology.color || 'grey' )}}">
+                <span class="animated">
+                    <img [src]="pokemon.url_image_mini" alt="">
+                </span>
+            </div>
+
+            <div class="card-body">
+                <div class="card-types-cont">
+                    <app-banner-type *ngFor="let type of pokemon.types" [type]="type.type.name" size="m"></app-banner-type>
+                </div>
+
+                <h2>
+                    {{pokemon.name}}
+
+                    <span class="title-detail">
+                        {{pokemon.order | positionFormat}}
+                    </span>
+                </h2>
+
+                <div class="body-content">
+                    <div class="desc-ability drop" *ngFor="let ability of pokemon.abilities; let i = index">
+                        {{i > 1? '+' : ability.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
 </div>

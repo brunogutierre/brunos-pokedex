@@ -10,7 +10,7 @@ import { Pokemon } from '../types/pokemon';
 })
 export class RemotePokemonService {
   private urlBase = '/api/';
-  public pageSize: number = 5;
+  public pageSize: number = 18;
 
   constructor(private httpClient: HttpClient, private localStoreService: LocalStorageService) { }
 

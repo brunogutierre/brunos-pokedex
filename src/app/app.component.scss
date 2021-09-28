@@ -5,14 +5,17 @@
     min-height: 100vh;
 
     background-color: rgba(100, 117, 131, 0.8);
-    box-shadow: 0 0 4px #666;
+    background: linear-gradient(173deg, rgba(6,47,88,1) 0%, rgba(35,86,108,1) 35%, rgba(158,183,194,1) 100%);
+    box-shadow: 0 0 3px #ccc;
+    overflow-x: hidden;
 }
 
 .toolbar {
-    font-size: 5em;
+    font-size: 3.5em;
     text-align: center;
     line-height: 2em;
-    margin-bottom: 40px;
+    margin: 0 -40px 0px -40px;
+    background-color: #fbfbfb;
 }
 
 /* Mobile */
@@ -24,6 +27,6 @@
 
     .toolbar {
         font-size: 8vw;
-        margin-bottom: 1em;
+        padding: 0 0 10px 0;
     }
 }

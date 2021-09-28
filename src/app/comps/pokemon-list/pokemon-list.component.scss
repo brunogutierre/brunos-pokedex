@@ -1,100 +1,192 @@
-.table-pokemon {
-    width: 100%;
-    border-spacing: 0;
+.border-black { border: 0 solid #000000; border-right-width: 3px; }
+.border-blue { border: 0 solid #2a2cbe; border-right-width: 3px; }
+.border-brown { border: 0 solid #7a5433; border-right-width: 3px; }
+.border-gray { border: 0 solid #757575; border-right-width: 3px; }
+.border-green { border: 0 solid #4f9b31; border-right-width: 3px; }
+.border-pink { border: 0 solid #e79090; border-right-width: 3px; }
+.border-purple { border: 0 solid #77287e; border-right-width: 3px; }
+.border-red { border: 0 solid #be0000; border-right-width: 3px; }
+.border-white { border: 0 solid #cecece; border-right-width: 3px; }
+.border-yellow { border: 0 solid #c4c716; border-right-width: 3px; }
 
-    th {
-        font-family: 'pokemon-font';
-        letter-spacing: 3px;
+.grade-tools {
+    display: flex; 
+    border-top: 0 solid #222; 
+    margin: 0 -40px 30px -40px; 
+    background-color: #fcfcfc;
+    padding: 2px 60px 12px 60px;
+    box-shadow: 0px 4px 3px #747474;
 
-        border-bottom: 2px solid #1b3b8a;
-        background-color: #ffcb05;
+    .search-tool {
+        display: inline-block; 
+        flex: 3;
+        text-align: left;
+
+        input {
+            width: 15em;
+            padding: 0 30px;
+            margin: 0;
+        }
+
+        .search-icon {
+            width: 24px; 
+            height: 24px; 
+            margin-top: 4px; 
+            margin-bottom: -7px; 
+            margin-right: -31px;
+        }
+
+        .clear-icon {
+            font-size: 1.1em; 
+            font-weight: 500; 
+            display: inline-block; 
+            margin-left: -24px; 
+            cursor: pointer; 
+            font-family: sans-serif; 
+            color: #333;
+        }
     }
 
-    th, td {
-        padding: 7px 0;
-    }
-
-    th input {
-        color: #222;
-        width: 9em;
-        margin-right: -180px;
-    }
-}
-
-.tr-loading td {
-    text-align: center;
-    height: 66px;
-}
-
-.selectable-table-line:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    cursor: pointer;
-
-    span.animated {
-        animation: shake 0.3s 2;
+    .pagination-tool {
         display: inline-block;
-    }
-}
-
-.table-footer {
-    text-align: center;
-    border-top: 2px solid #1b3b8a;
-    padding-top: 7px;
-
-    .menu-pagenation {
-        display: inline-block;
+        flex: 2; 
+        text-align: right;
 
         a {
-            display: inline-block;
-            margin: 0 10px;
-
+            color: #89400c; 
+            font-weight: 900; 
+            font-family: monospace; 
+            background-color: #ffcb05; 
+            width: 26px; 
+            height: 26px; 
+            text-align: center; 
+            border-radius: 20px; 
+            line-height: 25px; 
+            box-shadow: 2px 2px 3px #777; 
+            margin: 0 5px; 
+            font-size: 1.3em;
             cursor: pointer;
-            font-size: 1.7em;
-
-            line-height: 1em;
+            display: inline-block;
         }
 
         a:hover:not(.disabled) {
-            color: #ffdc4f;
-            text-shadow: 0.1em 0.1em 0px #1b3b8a;
+            background-color: #ffdc4f;
+            box-shadow: 2px 2px 3px #999; 
         }
 
         a.disabled {
-            color: #999;
+            background-color: #999;
+            color: #444;
             cursor: default !important;
         }
-
-        .poke-font.text {
-            font-size: 1.5em;
-            margin: auto 20px;
-        }
     }
+}
 
-    .poke-count {
-        float: right;
-        width: 200px;
-        margin-left: -20em;
-        font-size: 1.1em;
-        padding: 10px 20px;
+.poke-field {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+
+    .poke-card {
+        cursor: pointer; 
+        flex: 1; 
+        display: flex; 
+        height: 108px; 
+        min-width: 345px; 
+        max-width: 395px; 
+        background-color: white; 
+        border-radius: 5px; 
+        margin: 12px;
+
+        &:hover {
+            transform: scale(1.05);
+
+            span.animated {
+                animation: shake 0.3s 2;
+                display: inline-block;
+            }
+        }
+
+        .card-image-cont {
+            display: inline-block; 
+            background-color: #eee; 
+            border-radius: 5px 50px 50px 5px;
+
+            img {
+                width: 96px; 
+                height: 96px; 
+                margin: 6px; 
+                display: block;
+            }
+        }
+
+        .card-body {
+            height: 96px; 
+            display: inline-block; 
+            flex: 1; 
+            padding: 5px 5px 5px 10px;
+
+            .card-types-cont {
+                margin-top: -28px; 
+                float: right; 
+                margin-left: -10em;
+            }
+
+            h2 {
+                margin: 5px 0 0 0; 
+                text-transform: capitalize; 
+                font-size: 1.15em;
+
+                .title-detail {
+                    font-size: 0.9em; 
+                    color: #333; 
+                    font-weight: 400;
+                }
+            }
+
+            .body-content {
+                display: flex; 
+                align-items: flex-end; 
+                height: 100%; 
+                margin-top: -22px; 
+                justify-content: flex-end;
+
+                .desc-ability {
+                    font-size: 0.8em; 
+                    padding: 0.3em 0.8em; 
+                    margin: 0 5px;
+                }
+            }
+        }
     }
 }
 
 
 /* mobile */
 @media only screen and (hover: none) and (pointer: coarse){
-    .table-pokemon {
-        margin-bottom: 4.5em;
-        
-        th {
-            padding: 0;
-        }
-    }
-
-    .table-footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
+    .grade-tools {
         width: 100vw;
-        padding-bottom: 1em;
+        padding: 5px 10px 10px 10px;
+        margin: 0 0 20px 0;
+
+        input {
+            margin: 0;
+        }
+
+        .search-tool {
+            .search-icon {
+                margin-left: 10px;
+            }
+
+            input {
+                width: 5em;
+                padding: 0 13px 0 30px;
+                transition: 0.5s;
+            }
+
+            input:focus {
+                width: 12em;
+            }
+        }
     }
 }

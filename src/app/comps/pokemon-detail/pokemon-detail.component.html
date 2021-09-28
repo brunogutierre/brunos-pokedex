@@ -1,15 +1,15 @@
 <div *ngIf="pokemon" class="modal-detail-back" (click)="close()"></div>
 
 <div *ngIf="pokemon" class="detail-cont">
-    <div class="show-on-mobile close-button" (click)="close()">
+    <div class="close-button" (click)="close()">
         X
     </div>
 
-    <div class="hide-on-mobile next-button" (click)="nextPokemon()">
+    <div class="hide-on-mobile next-button {{nextPokemonId? '':'disabled'}}" (click)="nextPokemon()">
         &#062;
     </div>
 
-    <div class="hide-on-mobile prev-button" (click)="prevPokemon()">
+    <div class="hide-on-mobile prev-button {{prevPokemonId? '':'disabled'}}" (click)="prevPokemon()">
         &#060;
     </div>
 
@@ -77,7 +77,7 @@
                 </h3>
 
                 <div class="alt-list" *ngIf="pokemon.alt_forms && pokemon.alt_forms.length > 0">
-                    <div *ngFor="let alt of pokemon.alt_forms" class="alt-list-cont pokemon-shadow">
+                    <div *ngFor="let alt of pokemon.alt_forms" class="alt-list-cont">
                         <app-pokemon-link [id]="alt"></app-pokemon-link>
                     </div>
                 </div>

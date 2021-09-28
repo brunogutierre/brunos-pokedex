@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { FullPokemonListService } from 'src/app/servs/full-pokemon-list.service';
 import { RemotePokemonService } from 'src/app/servs/remote-pokemon.service';
 import { Pokemon } from 'src/app/types/pokemon';
@@ -14,6 +15,7 @@ export class PokemonListComponent implements OnInit {
   pokemons: (Pokemon | null)[] = [];
   pokemonCount: number = 0;
   page: number = 0;
+  loading: boolean = false;
 
   @ViewChild('inputfilter') inputFilter: any; 
   codSearch: any;
@@ -37,16 +39,22 @@ export class PokemonListComponent implements OnInit {
   }
 
   refreshListRemote() {
+    this.loading = true;
+
     this.remotePokemonService.getPokemonSpecies(this.page).subscribe(list => {
       if (list && list.results){
         this.pokemonCount = list.count;
         this.pokemons = [];
 
         list.results.forEach((pokemon:any, index:number) => {
-          this.pokemons[index] = null;
+          // this.pokemons[index] = null;
 
-          this.remotePokemonService.getPokemon(Util.getIdFromUrl(pokemon.url) || '').subscribe(poke => {
-            this.pokemons[index] = poke;
+          this.remotePokemonService.getPokemon(Util.getIdFromUrl(pokemon.url) || '')
+            .pipe(tap(() => {
+              setTimeout(() => {this.loading = false;}, 1000);
+            }))
+            .subscribe(poke => {
+              this.pokemons[index] = poke;
           })
         });
       }
@@ -55,17 +63,22 @@ export class PokemonListComponent implements OnInit {
 
   refreshListWithFilter() {
     if (this.page > this.getLastPage()) {
-      this.page = this.getLastPage();
+      this.page = Math.max(this.getLastPage(), 0);
     }
 
+    this.loading = true;
     this.pokemons = [];
     let results = this.filteredList.slice(this.remotePokemonService.pageSize * this.page, this.remotePokemonService.pageSize * (this.page + 1));
 
     results.forEach((pokemon:any, index:number) => {
       this.pokemons[index] = null;
 
-      this.remotePokemonService.getPokemon(Util.getIdFromUrl(pokemon.url) || '').subscribe(poke => {
-        this.pokemons[index] = poke;
+      this.remotePokemonService.getPokemon(Util.getIdFromUrl(pokemon.url) || '')
+        .pipe(tap(() => {
+          setTimeout(() => {this.loading = false;}, 1000);
+        }))
+        .subscribe(poke => {
+          this.pokemons[index] = poke;
       })
     });
   }
@@ -128,6 +141,11 @@ export class PokemonListComponent implements OnInit {
     else if (parseInt(event.target.value) > this.getLastPage()) {
       this.page = this.getLastPage();
     }
+  }
+
+  clearSearch(): void {
+    this.inputFilter.nativeElement.value = '';
+    this.refreshList();
   }
 
   filterSearch(event: any): void {
