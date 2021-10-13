@@ -29,7 +29,7 @@
 .poke-color-white { background: linear-gradient( 0deg, rgba(255, 255, 255, .6) 0%, #ddd0 25%); border-color: #c2c2c266; }
 .poke-color-yellow { background: linear-gradient( 0deg, rgba(243, 233, 99, .6) 0%, #ddd0 25%); border-color: #fbff0066; }
 
-@media only screen and (hover: none) and (pointer: coarse){
+@media only screen and (max-width: 760px) {
     .sprite-mini {
         width: 48px;
         height: 48px;

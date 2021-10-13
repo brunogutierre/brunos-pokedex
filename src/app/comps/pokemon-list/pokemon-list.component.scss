@@ -166,7 +166,7 @@
 
 
 /* mobile */
-@media only screen and (hover: none) and (pointer: coarse){
+@media only screen and (max-width: 760px) {
     .grade-tools {
         width: 100vw;
         padding: 5px 10px 10px 10px;

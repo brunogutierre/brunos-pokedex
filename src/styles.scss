@@ -105,7 +105,7 @@ figure, p {
     display: none;
 }
 
-@media only screen and (hover: none) and (pointer: coarse){
+@media only screen and (max-width: 760px) {
     .hide-on-mobile {
         display: none !important;
     }
