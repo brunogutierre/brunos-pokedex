@@ -40,3 +40,7 @@ ng serve
 - Comment the code (as always)
 - Use other data sources to make it more complete
 - Change the quantity of pokemon display in the list
+
+# See It Running
+
+https://bruno-pokedex.netlify.app/
