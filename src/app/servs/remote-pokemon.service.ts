@@ -9,7 +9,7 @@ import { Pokemon } from '../types/pokemon';
   providedIn: 'root'
 })
 export class RemotePokemonService {
-  private urlBase = '/api/';
+  private urlBase = 'https://pokeapi.co/api/v2/';
   public pageSize: number = 18;
 
   constructor(private httpClient: HttpClient, private localStoreService: LocalStorageService) { }
