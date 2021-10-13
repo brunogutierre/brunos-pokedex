@@ -17,7 +17,7 @@ import { PokeWeightPipe } from './pipes/poke-weight.pipe';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
-    swipe: { direction: Hammer.DIRECTION_ALL },
+    swipe: { direction: Hammer.DIRECTION_HORIZONTAL },
   };
 }
 
